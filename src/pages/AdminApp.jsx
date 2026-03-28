@@ -225,15 +225,7 @@ function DashboardPage() {
 
 // ==================== PROJECTS ====================
 function ProjectsPage() {
-  const { categories } = useSiteContext();
-  const [projects, setProjects] = useState([
-    { id: 1, title: 'Midnight Echoes', category: 'Long-Form', featured: true, status: 'published' },
-    { id: 2, title: 'Velocity', category: 'Short-Form', featured: true, status: 'published' },
-    { id: 3, title: 'Pulse', category: 'Short-Form', featured: false, status: 'published' },
-    { id: 4, title: 'Horizon', category: 'Long-Form', featured: false, status: 'draft' },
-    { id: 5, title: 'Neon Dreams', category: 'Long-Form', featured: true, status: 'published' },
-    { id: 6, title: 'Terra', category: 'Short-Form', featured: false, status: 'published' },
-  ]);
+  const { categories, projects, setProjects } = useSiteContext();
   const [showModal, setShowModal] = useState(false);
   const [editProject, setEditProject] = useState(null);
 
@@ -390,10 +382,10 @@ function ProjectModal({ project, categories, onClose, onSave }) {
 
 // ==================== HOMEPAGE ====================
 function HomepagePage() {
+  const { heroYoutubeId, setHeroYoutubeId } = useSiteContext();
   const [heroText1, setHeroText1] = useState("I DON'T EDIT VIDEOS");
   const [heroText2, setHeroText2] = useState('I CREATE EXPERIENCES');
   const [subtitle, setSubtitle] = useState('Cinematic Video Editor — Crafting Visual Stories That Move People');
-  const [heroYoutubeId, setHeroYoutubeId] = useState('dQw4w9WgXcQ');
 
   return (
     <div className="admin-page">

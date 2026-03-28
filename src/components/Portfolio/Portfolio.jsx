@@ -6,59 +6,8 @@ import './Portfolio.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const projects = [
-  {
-    id: 1,
-    title: 'Midnight Echoes',
-    category: 'Long-Form',
-    youtubeId: 'dQw4w9WgXcQ',
-    year: '2024',
-    description: 'A cinematic short exploring the echoes of memory through light and shadow.',
-  },
-  {
-    id: 2,
-    title: 'Velocity',
-    category: 'Short-Form',
-    youtubeId: 'LXb3EKWsInQ',
-    year: '2024',
-    description: 'High-energy automotive commercial with precision editing and dynamic transitions.',
-  },
-  {
-    id: 3,
-    title: 'Pulse',
-    category: 'Short-Form',
-    youtubeId: 'ScMzIvxBSi4',
-    year: '2024',
-    description: 'Viral-ready social content that captures attention in the first frame.',
-  },
-  {
-    id: 4,
-    title: 'Horizon',
-    category: 'Long-Form',
-    youtubeId: '2Gg6Seob5Mg',
-    year: '2023',
-    description: 'Documentary-style YouTube content with cinematic color grading.',
-  },
-  {
-    id: 5,
-    title: 'Neon Dreams',
-    category: 'Long-Form',
-    youtubeId: 'C0DPdy98e4c',
-    year: '2023',
-    description: 'A neon-lit journey through urban nightlife captured in stunning visuals.',
-  },
-  {
-    id: 6,
-    title: 'Terra',
-    category: 'Short-Form',
-    youtubeId: 'YE7VzlLtp-4',
-    year: '2023',
-    description: 'Nature-inspired brand film with sweeping landscape cinematography.',
-  },
-];
-
 const Portfolio = () => {
-  const { categories } = useSiteContext();
+  const { categories, projects } = useSiteContext();
   const sectionRef = useRef(null);
   const gridRef = useRef(null);
   const [activeCategory, setActiveCategory] = useState('All');

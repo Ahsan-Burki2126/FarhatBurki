@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useSiteContext } from '../../context/SiteContext';
 import './Hero.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,7 +14,7 @@ const Hero = () => {
   const nameRef = useRef(null);
   const roleRef = useRef(null);
   const mediaRef = useRef(null);
-  const heroYoutubeId = 'dQw4w9WgXcQ';
+  const { heroYoutubeId } = useSiteContext();
   const dividerLineRef = useRef(null);
   const wordRef = useRef(null);
   const wordIndex = useRef(0);
