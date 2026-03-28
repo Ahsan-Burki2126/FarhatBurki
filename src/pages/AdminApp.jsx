@@ -1,10 +1,17 @@
-import { useState, useEffect } from 'react';
-import { Routes, Route, Navigate, useNavigate, Link, useLocation } from 'react-router-dom';
-import { useSiteContext } from '../context/SiteContext';
-import './Admin.css';
+import { useState, useEffect } from "react";
+import {
+  Routes,
+  Route,
+  Navigate,
+  useNavigate,
+  Link,
+  useLocation,
+} from "react-router-dom";
+import { useSiteContext } from "../context/SiteContext";
+import "./Admin.css";
 
 // ==================== AUTH ====================
-const AUTH_KEY = 'farhat_admin_token';
+const AUTH_KEY = "farhat_admin_token";
 
 function getToken() {
   return localStorage.getItem(AUTH_KEY);
@@ -24,32 +31,35 @@ function isAuthenticated() {
 
 // ==================== LOGIN ====================
 function LoginPage({ onLogin }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError('');
+    setError("");
 
     try {
-      const res = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
 
       if (!res.ok) {
         // Fallback for demo mode
-        if (email === 'admin@farhat.com' && password === 'admin123') {
-          const token = 'demo_token_' + Date.now();
+        if (
+          email === "admin@farhat.com" &&
+          password === "portfolio.farhat3636##"
+        ) {
+          const token = "demo_token_" + Date.now();
           setToken(token);
           onLogin();
           return;
         }
-        throw new Error('Invalid credentials');
+        throw new Error("Invalid credentials");
       }
 
       const data = await res.json();
@@ -57,13 +67,13 @@ function LoginPage({ onLogin }) {
       onLogin();
     } catch (err) {
       // Demo mode fallback
-      if (email === 'admin@farhat.com' && password === 'admin123') {
-        const token = 'demo_token_' + Date.now();
+      if (email === "admin@farhat.com" && password === "admin123") {
+        const token = "demo_token_" + Date.now();
         setToken(token);
         onLogin();
         return;
       }
-      setError(err.message || 'Login failed');
+      setError(err.message || "Login failed");
     } finally {
       setLoading(false);
     }
@@ -73,7 +83,9 @@ function LoginPage({ onLogin }) {
     <div className="admin-login">
       <div className="login-card">
         <div className="login-header">
-          <h1 className="login-logo">FARHAT<span className="dot">.</span></h1>
+          <h1 className="login-logo">
+            FARHAT<span className="dot">.</span>
+          </h1>
           <p className="login-subtitle">Admin Dashboard</p>
         </div>
 
@@ -86,7 +98,7 @@ function LoginPage({ onLogin }) {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="admin@farhat.com"
+              placeholder="Enter Your Email"
               required
             />
           </div>
@@ -103,7 +115,7 @@ function LoginPage({ onLogin }) {
           </div>
 
           <button type="submit" className="login-btn" disabled={loading}>
-            {loading ? 'Signing in...' : 'Sign In'}
+            {loading ? "Signing in..." : "Sign In"}
           </button>
 
           <p className="login-hint">Demo: admin@farhat.com / admin123</p>
@@ -118,19 +130,21 @@ function Sidebar({ onLogout }) {
   const location = useLocation();
 
   const links = [
-    { path: '/admin', label: 'Dashboard', icon: '📊' },
-    { path: '/admin/projects', label: 'Projects', icon: '🎬' },
-    { path: '/admin/homepage', label: 'Homepage', icon: '🏠' },
-    { path: '/admin/about', label: 'About', icon: '👤' },
-    { path: '/admin/services', label: 'Services', icon: '💼' },
-    { path: '/admin/media', label: 'Media Library', icon: '🖼️' },
-    { path: '/admin/animations', label: 'Animations', icon: '✨' },
+    { path: "/admin", label: "Dashboard", icon: "📊" },
+    { path: "/admin/projects", label: "Projects", icon: "🎬" },
+    { path: "/admin/homepage", label: "Homepage", icon: "🏠" },
+    { path: "/admin/about", label: "About", icon: "👤" },
+    { path: "/admin/services", label: "Services", icon: "💼" },
+    { path: "/admin/media", label: "Media Library", icon: "🖼️" },
+    { path: "/admin/animations", label: "Animations", icon: "✨" },
   ];
 
   return (
     <aside className="admin-sidebar">
       <div className="sidebar-logo">
-        <Link to="/admin">FARHAT<span className="dot">.</span></Link>
+        <Link to="/admin">
+          FARHAT<span className="dot">.</span>
+        </Link>
       </div>
 
       <nav className="sidebar-nav">
@@ -138,7 +152,7 @@ function Sidebar({ onLogout }) {
           <Link
             key={link.path}
             to={link.path}
-            className={`sidebar-link ${location.pathname === link.path ? 'active' : ''}`}
+            className={`sidebar-link ${location.pathname === link.path ? "active" : ""}`}
           >
             <span className="sidebar-icon">{link.icon}</span>
             <span>{link.label}</span>
@@ -163,10 +177,10 @@ function Sidebar({ onLogout }) {
 // ==================== DASHBOARD ====================
 function DashboardPage() {
   const stats = [
-    { label: 'Total Projects', value: '24', change: '+3 this month' },
-    { label: 'Media Files', value: '156', change: '2.4 GB used' },
-    { label: 'Contact Messages', value: '12', change: '5 unread' },
-    { label: 'Page Views', value: '8.2K', change: '+12% this week' },
+    { label: "Total Projects", value: "24", change: "+3 this month" },
+    { label: "Media Files", value: "156", change: "2.4 GB used" },
+    { label: "Contact Messages", value: "12", change: "5 unread" },
+    { label: "Page Views", value: "8.2K", change: "+12% this week" },
   ];
 
   return (
@@ -190,7 +204,7 @@ function DashboardPage() {
         <div className="dashboard-card">
           <h3>Recent Projects</h3>
           <div className="recent-list">
-            {['Midnight Echoes', 'Velocity', 'Pulse'].map((name) => (
+            {["Midnight Echoes", "Velocity", "Pulse"].map((name) => (
               <div key={name} className="recent-item">
                 <span className="recent-dot" />
                 <span>{name}</span>
@@ -204,9 +218,9 @@ function DashboardPage() {
           <h3>Recent Messages</h3>
           <div className="recent-list">
             {[
-              { from: 'John D.', subject: 'YouTube series inquiry' },
-              { from: 'Sarah M.', subject: 'Wedding film editing' },
-              { from: 'Brand Co.', subject: 'Commercial project' },
+              { from: "John D.", subject: "YouTube series inquiry" },
+              { from: "Sarah M.", subject: "Wedding film editing" },
+              { from: "Brand Co.", subject: "Commercial project" },
             ].map((msg) => (
               <div key={msg.from} className="recent-item">
                 <span className="recent-dot recent-dot--blue" />
@@ -230,13 +244,15 @@ function ProjectsPage() {
   const [editProject, setEditProject] = useState(null);
 
   const handleDelete = (id) => {
-    if (window.confirm('Delete this project?')) {
+    if (window.confirm("Delete this project?")) {
       setProjects(projects.filter((p) => p.id !== id));
     }
   };
 
   const handleToggleFeatured = (id) => {
-    setProjects(projects.map((p) => p.id === id ? { ...p, featured: !p.featured } : p));
+    setProjects(
+      projects.map((p) => (p.id === id ? { ...p, featured: !p.featured } : p)),
+    );
   };
 
   return (
@@ -246,7 +262,13 @@ function ProjectsPage() {
           <h1>Projects</h1>
           <p>Manage your portfolio projects</p>
         </div>
-        <button className="admin-btn primary" onClick={() => { setEditProject(null); setShowModal(true); }}>
+        <button
+          className="admin-btn primary"
+          onClick={() => {
+            setEditProject(null);
+            setShowModal(true);
+          }}
+        >
           + Add Project
         </button>
       </div>
@@ -266,10 +288,12 @@ function ProjectsPage() {
             {projects.map((project) => (
               <tr key={project.id}>
                 <td className="table-title">{project.title}</td>
-                <td><span className="table-badge">{project.category}</span></td>
+                <td>
+                  <span className="table-badge">{project.category}</span>
+                </td>
                 <td>
                   <button
-                    className={`toggle-btn ${project.featured ? 'on' : ''}`}
+                    className={`toggle-btn ${project.featured ? "on" : ""}`}
                     onClick={() => handleToggleFeatured(project.id)}
                   >
                     <span className="toggle-knob" />
@@ -281,8 +305,21 @@ function ProjectsPage() {
                   </span>
                 </td>
                 <td className="table-actions">
-                  <button className="action-btn" onClick={() => { setEditProject(project); setShowModal(true); }}>Edit</button>
-                  <button className="action-btn delete" onClick={() => handleDelete(project.id)}>Delete</button>
+                  <button
+                    className="action-btn"
+                    onClick={() => {
+                      setEditProject(project);
+                      setShowModal(true);
+                    }}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="action-btn delete"
+                    onClick={() => handleDelete(project.id)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
@@ -297,9 +334,16 @@ function ProjectsPage() {
           onClose={() => setShowModal(false)}
           onSave={(data) => {
             if (editProject) {
-              setProjects(projects.map((p) => p.id === editProject.id ? { ...p, ...data } : p));
+              setProjects(
+                projects.map((p) =>
+                  p.id === editProject.id ? { ...p, ...data } : p,
+                ),
+              );
             } else {
-              setProjects([...projects, { ...data, id: Date.now(), status: 'draft' }]);
+              setProjects([
+                ...projects,
+                { ...data, id: Date.now(), status: "draft" },
+              ]);
             }
             setShowModal(false);
           }}
@@ -311,50 +355,88 @@ function ProjectsPage() {
 
 function ProjectModal({ project, categories, onClose, onSave }) {
   const [form, setForm] = useState({
-    title: project?.title || '',
-    category: project?.category || (categories[0]?.label || ''),
-    description: project?.description || '',
+    title: project?.title || "",
+    category: project?.category || categories[0]?.label || "",
+    description: project?.description || "",
     featured: project?.featured || false,
-    youtubeId: project?.youtubeId || '',
+    youtubeId: project?.youtubeId || "",
   });
 
   return (
     <div className="admin-modal-overlay" onClick={onClose}>
       <div className="admin-modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
-          <h2>{project ? 'Edit Project' : 'New Project'}</h2>
-          <button className="modal-close-btn" onClick={onClose}>&times;</button>
+          <h2>{project ? "Edit Project" : "New Project"}</h2>
+          <button className="modal-close-btn" onClick={onClose}>
+            &times;
+          </button>
         </div>
         <div className="modal-body">
           <div className="form-field">
             <label>Title</label>
-            <input value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} />
+            <input
+              value={form.title}
+              onChange={(e) => setForm({ ...form, title: e.target.value })}
+            />
           </div>
           <div className="form-field">
             <label>Category</label>
-            <select value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })}>
+            <select
+              value={form.category}
+              onChange={(e) => setForm({ ...form, category: e.target.value })}
+            >
               {categories.map((cat) => (
-                <option key={cat.id} value={cat.label}>{cat.label}</option>
+                <option key={cat.id} value={cat.label}>
+                  {cat.label}
+                </option>
               ))}
             </select>
           </div>
           <div className="form-field">
             <label>Description</label>
-            <textarea rows="3" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
+            <textarea
+              rows="3"
+              value={form.description}
+              onChange={(e) =>
+                setForm({ ...form, description: e.target.value })
+              }
+            />
           </div>
           <div className="form-field">
             <label>YouTube Video ID</label>
-            <input value={form.youtubeId} onChange={(e) => setForm({ ...form, youtubeId: e.target.value })} placeholder="e.g. dQw4w9WgXcQ" />
-            <span className="form-hint">The ID from the YouTube URL: youtube.com/watch?v=<strong>VIDEO_ID</strong></span>
+            <input
+              value={form.youtubeId}
+              onChange={(e) => setForm({ ...form, youtubeId: e.target.value })}
+              placeholder="e.g. dQw4w9WgXcQ"
+            />
+            <span className="form-hint">
+              The ID from the YouTube URL: youtube.com/watch?v=
+              <strong>VIDEO_ID</strong>
+            </span>
           </div>
           {form.youtubeId && (
             <div className="form-field">
               <label>Preview</label>
-              <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', borderRadius: 8 }}>
+              <div
+                style={{
+                  position: "relative",
+                  paddingBottom: "56.25%",
+                  height: 0,
+                  overflow: "hidden",
+                  borderRadius: 8,
+                }}
+              >
                 <iframe
                   src={`https://www.youtube.com/embed/${form.youtubeId}`}
                   title="Preview"
-                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    border: "none",
+                  }}
                   allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 />
@@ -364,15 +446,23 @@ function ProjectModal({ project, categories, onClose, onSave }) {
 
           <div className="form-field checkbox-field">
             <label>
-              <input type="checkbox" checked={form.featured} onChange={(e) => setForm({ ...form, featured: e.target.checked })} />
+              <input
+                type="checkbox"
+                checked={form.featured}
+                onChange={(e) =>
+                  setForm({ ...form, featured: e.target.checked })
+                }
+              />
               Featured Project
             </label>
           </div>
         </div>
         <div className="modal-footer">
-          <button className="admin-btn secondary" onClick={onClose}>Cancel</button>
+          <button className="admin-btn secondary" onClick={onClose}>
+            Cancel
+          </button>
           <button className="admin-btn primary" onClick={() => onSave(form)}>
-            {project ? 'Update' : 'Create'} Project
+            {project ? "Update" : "Create"} Project
           </button>
         </div>
       </div>
@@ -384,8 +474,10 @@ function ProjectModal({ project, categories, onClose, onSave }) {
 function HomepagePage() {
   const { heroYoutubeId, setHeroYoutubeId } = useSiteContext();
   const [heroText1, setHeroText1] = useState("I DON'T EDIT VIDEOS");
-  const [heroText2, setHeroText2] = useState('I CREATE EXPERIENCES');
-  const [subtitle, setSubtitle] = useState('Cinematic Video Editor — Crafting Visual Stories That Move People');
+  const [heroText2, setHeroText2] = useState("I CREATE EXPERIENCES");
+  const [subtitle, setSubtitle] = useState(
+    "Cinematic Video Editor — Crafting Visual Stories That Move People",
+  );
 
   return (
     <div className="admin-page">
@@ -398,29 +490,60 @@ function HomepagePage() {
         <h3>Hero Section</h3>
         <div className="form-field">
           <label>Hero Line 1</label>
-          <input value={heroText1} onChange={(e) => setHeroText1(e.target.value)} />
+          <input
+            value={heroText1}
+            onChange={(e) => setHeroText1(e.target.value)}
+          />
         </div>
         <div className="form-field">
           <label>Hero Line 2</label>
-          <input value={heroText2} onChange={(e) => setHeroText2(e.target.value)} />
+          <input
+            value={heroText2}
+            onChange={(e) => setHeroText2(e.target.value)}
+          />
         </div>
         <div className="form-field">
           <label>Subtitle</label>
-          <input value={subtitle} onChange={(e) => setSubtitle(e.target.value)} />
+          <input
+            value={subtitle}
+            onChange={(e) => setSubtitle(e.target.value)}
+          />
         </div>
         <div className="form-field">
           <label>Hero Background YouTube Video ID</label>
-          <input value={heroYoutubeId} onChange={(e) => setHeroYoutubeId(e.target.value)} placeholder="e.g. dQw4w9WgXcQ" />
-          <span className="form-hint">The ID from the YouTube URL: youtube.com/watch?v=<strong>VIDEO_ID</strong></span>
+          <input
+            value={heroYoutubeId}
+            onChange={(e) => setHeroYoutubeId(e.target.value)}
+            placeholder="e.g. dQw4w9WgXcQ"
+          />
+          <span className="form-hint">
+            The ID from the YouTube URL: youtube.com/watch?v=
+            <strong>VIDEO_ID</strong>
+          </span>
         </div>
         {heroYoutubeId && (
           <div className="form-field">
             <label>Preview</label>
-            <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', borderRadius: 8 }}>
+            <div
+              style={{
+                position: "relative",
+                paddingBottom: "56.25%",
+                height: 0,
+                overflow: "hidden",
+                borderRadius: 8,
+              }}
+            >
               <iframe
                 src={`https://www.youtube.com/embed/${heroYoutubeId}?autoplay=0`}
                 title="Hero Preview"
-                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  border: "none",
+                }}
                 allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
@@ -436,13 +559,25 @@ function HomepagePage() {
 // ==================== ABOUT ====================
 function AboutPage() {
   const [milestones, setMilestones] = useState([
-    { year: '2018', title: 'The Spark', description: 'Picked up my first camera...' },
-    { year: '2019', title: 'First Client', description: 'Landed my first commercial project...' },
-    { year: '2020', title: 'Going Pro', description: 'Went full-time as a video editor...' },
+    {
+      year: "2018",
+      title: "The Spark",
+      description: "Picked up my first camera...",
+    },
+    {
+      year: "2019",
+      title: "First Client",
+      description: "Landed my first commercial project...",
+    },
+    {
+      year: "2020",
+      title: "Going Pro",
+      description: "Went full-time as a video editor...",
+    },
   ]);
 
   const handleAdd = () => {
-    setMilestones([...milestones, { year: '', title: '', description: '' }]);
+    setMilestones([...milestones, { year: "", title: "", description: "" }]);
   };
 
   const handleUpdate = (index, field, value) => {
@@ -462,14 +597,19 @@ function AboutPage() {
           <h1>About Page</h1>
           <p>Edit your story and timeline</p>
         </div>
-        <button className="admin-btn primary" onClick={handleAdd}>+ Add Milestone</button>
+        <button className="admin-btn primary" onClick={handleAdd}>
+          + Add Milestone
+        </button>
       </div>
 
       <div className="admin-card">
         <h3>Bio</h3>
         <div className="form-field">
           <label>Description</label>
-          <textarea rows="4" defaultValue="I believe every frame tells a story..." />
+          <textarea
+            rows="4"
+            defaultValue="I believe every frame tells a story..."
+          />
         </div>
         <button className="admin-btn primary">Save Bio</button>
       </div>
@@ -480,20 +620,36 @@ function AboutPage() {
           <div key={i} className="milestone-edit-row">
             <div className="form-field small">
               <label>Year</label>
-              <input value={m.year} onChange={(e) => handleUpdate(i, 'year', e.target.value)} />
+              <input
+                value={m.year}
+                onChange={(e) => handleUpdate(i, "year", e.target.value)}
+              />
             </div>
             <div className="form-field">
               <label>Title</label>
-              <input value={m.title} onChange={(e) => handleUpdate(i, 'title', e.target.value)} />
+              <input
+                value={m.title}
+                onChange={(e) => handleUpdate(i, "title", e.target.value)}
+              />
             </div>
             <div className="form-field wide">
               <label>Description</label>
-              <input value={m.description} onChange={(e) => handleUpdate(i, 'description', e.target.value)} />
+              <input
+                value={m.description}
+                onChange={(e) => handleUpdate(i, "description", e.target.value)}
+              />
             </div>
-            <button className="action-btn delete" onClick={() => handleRemove(i)}>×</button>
+            <button
+              className="action-btn delete"
+              onClick={() => handleRemove(i)}
+            >
+              ×
+            </button>
           </div>
         ))}
-        <button className="admin-btn primary" style={{ marginTop: 16 }}>Save Timeline</button>
+        <button className="admin-btn primary" style={{ marginTop: 16 }}>
+          Save Timeline
+        </button>
       </div>
     </div>
   );
@@ -502,17 +658,19 @@ function AboutPage() {
 // ==================== SERVICES ====================
 function ServicesPage() {
   const { categories, addCategory, removeCategory } = useSiteContext();
-  const [newCategoryName, setNewCategoryName] = useState('');
+  const [newCategoryName, setNewCategoryName] = useState("");
 
   const handleAddCategory = () => {
     const name = newCategoryName.trim();
     if (!name) return;
     addCategory(name);
-    setNewCategoryName('');
+    setNewCategoryName("");
   };
 
   const handleRemoveCategory = (id) => {
-    if (window.confirm('Remove this category from both Services and Projects?')) {
+    if (
+      window.confirm("Remove this category from both Services and Projects?")
+    ) {
       removeCategory(id);
     }
   };
@@ -528,25 +686,38 @@ function ServicesPage() {
 
       <div className="admin-card">
         <h3>Categories</h3>
-        <p className="card-desc">These categories are shared between the Services section and the Projects section on the site.</p>
+        <p className="card-desc">
+          These categories are shared between the Services section and the
+          Projects section on the site.
+        </p>
 
         <div className="category-list">
           {categories.map((cat) => (
             <div key={cat.id} className="category-row">
               <span className="table-badge">{cat.label}</span>
-              <button className="action-btn delete" onClick={() => handleRemoveCategory(cat.id)}>Remove</button>
+              <button
+                className="action-btn delete"
+                onClick={() => handleRemoveCategory(cat.id)}
+              >
+                Remove
+              </button>
             </div>
           ))}
         </div>
 
-        <div className="category-add-row" style={{ display: 'flex', gap: 8, marginTop: 16 }}>
+        <div
+          className="category-add-row"
+          style={{ display: "flex", gap: 8, marginTop: 16 }}
+        >
           <input
             value={newCategoryName}
             onChange={(e) => setNewCategoryName(e.target.value)}
             placeholder="New category name..."
-            onKeyDown={(e) => e.key === 'Enter' && handleAddCategory()}
+            onKeyDown={(e) => e.key === "Enter" && handleAddCategory()}
           />
-          <button className="admin-btn primary" onClick={handleAddCategory}>+ Add Category</button>
+          <button className="admin-btn primary" onClick={handleAddCategory}>
+            + Add Category
+          </button>
         </div>
       </div>
     </div>
@@ -556,11 +727,11 @@ function ServicesPage() {
 // ==================== MEDIA LIBRARY ====================
 function MediaPage() {
   const [files, setFiles] = useState([
-    { id: 1, name: 'hero-reel.mp4', type: 'video', size: '45 MB' },
-    { id: 2, name: 'midnight-echoes.mp4', type: 'video', size: '120 MB' },
-    { id: 3, name: 'thumbnail-1.jpg', type: 'image', size: '2.1 MB' },
-    { id: 4, name: 'velocity-final.mp4', type: 'video', size: '89 MB' },
-    { id: 5, name: 'thumbnail-2.jpg', type: 'image', size: '1.8 MB' },
+    { id: 1, name: "hero-reel.mp4", type: "video", size: "45 MB" },
+    { id: 2, name: "midnight-echoes.mp4", type: "video", size: "120 MB" },
+    { id: 3, name: "thumbnail-1.jpg", type: "image", size: "2.1 MB" },
+    { id: 4, name: "velocity-final.mp4", type: "video", size: "89 MB" },
+    { id: 5, name: "thumbnail-2.jpg", type: "image", size: "1.8 MB" },
   ]);
 
   const handleDrop = (e) => {
@@ -570,8 +741,8 @@ function MediaPage() {
     const newFiles = droppedFiles.map((f, i) => ({
       id: Date.now() + i,
       name: f.name,
-      type: f.type.startsWith('video') ? 'video' : 'image',
-      size: (f.size / (1024 * 1024)).toFixed(1) + ' MB',
+      type: f.type.startsWith("video") ? "video" : "image",
+      size: (f.size / (1024 * 1024)).toFixed(1) + " MB",
     }));
     setFiles([...newFiles, ...files]);
   };
@@ -591,8 +762,15 @@ function MediaPage() {
         <div className="dropzone-content">
           <span className="dropzone-icon">📁</span>
           <p>Drag & drop files here</p>
-          <span className="dropzone-hint">or click to browse (Videos & Images)</span>
-          <input type="file" multiple accept="video/*,image/*" className="upload-input" />
+          <span className="dropzone-hint">
+            or click to browse (Videos & Images)
+          </span>
+          <input
+            type="file"
+            multiple
+            accept="video/*,image/*"
+            className="upload-input"
+          />
         </div>
       </div>
 
@@ -600,13 +778,18 @@ function MediaPage() {
         {files.map((file) => (
           <div key={file.id} className="media-item">
             <div className={`media-thumb ${file.type}`}>
-              {file.type === 'video' ? '🎬' : '🖼️'}
+              {file.type === "video" ? "🎬" : "🖼️"}
             </div>
             <div className="media-info">
               <span className="media-name">{file.name}</span>
               <span className="media-size">{file.size}</span>
             </div>
-            <button className="action-btn delete" onClick={() => setFiles(files.filter((f) => f.id !== file.id))}>×</button>
+            <button
+              className="action-btn delete"
+              onClick={() => setFiles(files.filter((f) => f.id !== file.id))}
+            >
+              ×
+            </button>
           </div>
         ))}
       </div>
@@ -645,25 +828,36 @@ function AnimationsPage() {
           {Object.entries(settings).map(([key, value]) => (
             <div key={key} className="toggle-row">
               <div>
-                <span className="toggle-label">{key.replace(/([A-Z])/g, ' $1').replace(/^./, s => s.toUpperCase())}</span>
+                <span className="toggle-label">
+                  {key
+                    .replace(/([A-Z])/g, " $1")
+                    .replace(/^./, (s) => s.toUpperCase())}
+                </span>
               </div>
-              <button className={`toggle-btn ${value ? 'on' : ''}`} onClick={() => toggle(key)}>
+              <button
+                className={`toggle-btn ${value ? "on" : ""}`}
+                onClick={() => toggle(key)}
+              >
                 <span className="toggle-knob" />
               </button>
             </div>
           ))}
         </div>
-        <button className="admin-btn primary" style={{ marginTop: 24 }}>Save Settings</button>
+        <button className="admin-btn primary" style={{ marginTop: 24 }}>
+          Save Settings
+        </button>
       </div>
 
       <div className="admin-card">
         <h3>Performance Mode</h3>
-        <p className="card-desc">Enable reduced motion for visitors who prefer less animation.</p>
+        <p className="card-desc">
+          Enable reduced motion for visitors who prefer less animation.
+        </p>
         <div className="toggle-row">
           <span className="toggle-label">Reduce Motion (Accessibility)</span>
           <button
-            className={`toggle-btn ${settings.reduceMotion ? 'on' : ''}`}
-            onClick={() => toggle('reduceMotion')}
+            className={`toggle-btn ${settings.reduceMotion ? "on" : ""}`}
+            onClick={() => toggle("reduceMotion")}
           >
             <span className="toggle-knob" />
           </button>
