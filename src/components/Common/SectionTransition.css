@@ -1,0 +1,18 @@
+.section-transition {
+  width: 100%;
+  padding: 0 40px;
+  overflow: hidden;
+}
+
+.transition-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent);
+  transform: scaleX(0);
+  will-change: transform;
+}
+
+@media (max-width: 768px) {
+  .section-transition {
+    padding: 0 16px;
+  }
+}

@@ -1,0 +1,186 @@
+/* ============================================
+   HORIZONTAL SCROLL SECTION
+   ============================================ */
+
+.hscroll {
+  position: relative;
+  overflow: hidden;
+  background: #050505;
+  padding-top: 80px;
+}
+
+.hscroll-header {
+  text-align: center;
+  margin-bottom: 48px;
+  padding: 0 40px;
+}
+
+.hscroll-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #8B5CF6;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.hscroll-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  color: #f5f5f5;
+  letter-spacing: -0.5px;
+}
+
+.hscroll-track {
+  display: flex;
+  gap: 32px;
+  padding: 0 80px 80px;
+  will-change: transform;
+}
+
+.hscroll-card {
+  flex-shrink: 0;
+  width: 420px;
+  background: rgba(10, 10, 10, 0.8);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(139, 92, 246, 0.08);
+  transition: border-color 0.4s ease;
+  will-change: transform, opacity;
+}
+
+.hscroll-card:hover {
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.hscroll-card-thumb {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 20px;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+.hscroll-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+.hscroll-card:hover .hscroll-card-img {
+  transform: scale(1.05);
+}
+
+.hscroll-card-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.hscroll-card-thumb::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to top, rgba(10, 10, 10, 0.8), transparent);
+  pointer-events: none;
+}
+
+.hscroll-card-number {
+  position: relative;
+  z-index: 1;
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.15);
+}
+
+.hscroll-card-body {
+  padding: 24px;
+}
+
+.hscroll-card-category {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #8B5CF6;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.hscroll-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f5f5f5;
+  margin-bottom: 8px;
+}
+
+.hscroll-card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(245, 245, 245, 0.4);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .hscroll {
+    padding-top: 60px;
+  }
+
+  .hscroll-track {
+    gap: 20px;
+    padding: 0 40px 60px;
+  }
+
+  .hscroll-card {
+    width: 320px;
+  }
+
+  .hscroll-card-thumb {
+    height: 200px;
+  }
+
+  .hscroll-card-title {
+    font-size: 1.25rem;
+  }
+
+  .hscroll-card-desc {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hscroll-track {
+    padding: 0 24px 48px;
+  }
+
+  .hscroll-card {
+    width: 280px;
+  }
+
+  .hscroll-card-thumb {
+    height: 160px;
+  }
+}

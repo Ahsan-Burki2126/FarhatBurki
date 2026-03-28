@@ -1,0 +1,44 @@
+/* ============================================
+   GLOBAL BACKGROUND — Subtle Living Backdrop
+   ============================================ */
+
+.global-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.global-bg-gradient {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 50%,
+    rgba(101, 89, 224, 0.04) 0%,
+    rgba(139, 92, 246, 0.03) 30%,
+    transparent 60%
+  );
+  will-change: transform;
+}
+
+/* Noise/grain texture */
+.global-bg-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  animation: noiseShift 0.5s steps(5) infinite;
+}
+
+@keyframes noiseShift {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-10px, 10px); }
+  40% { transform: translate(10px, -10px); }
+  60% { transform: translate(-5px, -5px); }
+  80% { transform: translate(5px, 5px); }
+  100% { transform: translate(0, 0); }
+}

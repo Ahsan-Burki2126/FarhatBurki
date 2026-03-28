@@ -1,0 +1,225 @@
+/* Services Section */
+.services {
+  position: relative;
+  background: var(--bg-secondary);
+}
+
+.services-header {
+  margin-bottom: 40px;
+}
+
+/* Category Tabs */
+.services-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.services-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 28px;
+  border-radius: 40px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-medium);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+.services-tab-icon {
+  font-size: 1.1rem;
+}
+
+.services-tab:hover {
+  border-color: rgba(139, 92, 246, 0.25);
+  color: var(--text-primary);
+}
+
+.services-tab--active {
+  background: linear-gradient(135deg, rgba(101, 89, 224, 0.15), rgba(139, 92, 246, 0.1));
+  border-color: rgba(139, 92, 246, 0.35);
+  color: var(--text-primary);
+}
+
+.services-tab--active .services-tab-icon {
+  color: var(--color-purple);
+}
+
+/* Category description */
+.services-category-desc {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin-bottom: 48px;
+}
+
+/* Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* Card */
+.service-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  transition: all 0.4s ease;
+  will-change: transform;
+}
+
+.service-card:hover {
+  border-color: rgba(139, 92, 246, 0.2);
+  transform: translateY(-6px);
+}
+
+.card-glow {
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, rgba(101, 89, 224, 0.08), rgba(139, 92, 246, 0.06), rgba(167, 139, 250, 0.04));
+  opacity: 0;
+  border-radius: 16px;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.service-card:hover .card-glow {
+  opacity: 1;
+}
+
+.card-inner {
+  position: relative;
+  padding: 40px;
+  z-index: 1;
+}
+
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background: rgba(139, 92, 246, 0.08);
+  border-radius: 12px;
+  line-height: 1;
+  color: var(--color-purple);
+}
+
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.card-description {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+/* Features */
+.card-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.card-feature {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-medium);
+  padding: 6px 12px;
+  background: rgba(139, 92, 246, 0.06);
+  border: 1px solid rgba(139, 92, 246, 0.1);
+  border-radius: 20px;
+}
+
+.feature-dot {
+  width: 4px;
+  height: 4px;
+  background: var(--color-purple);
+  border-radius: 50%;
+}
+
+/* Footer */
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-price {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #6559E0, #8B5CF6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-cta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-medium);
+  transition: all 0.3s ease;
+}
+
+.card-cta:hover {
+  color: var(--text-primary);
+  gap: 12px;
+}
+
+.card-cta svg {
+  transition: transform 0.3s ease;
+}
+
+.card-cta:hover svg {
+  transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .services-tabs {
+    flex-wrap: wrap;
+  }
+  .services-tab {
+    padding: 10px 20px;
+    font-size: 0.75rem;
+  }
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  .card-inner {
+    padding: 28px;
+  }
+}

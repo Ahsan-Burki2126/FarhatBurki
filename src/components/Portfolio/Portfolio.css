@@ -1,0 +1,148 @@
+/* Portfolio Section */
+.portfolio {
+  position: relative;
+  background: var(--bg-primary);
+}
+
+.portfolio-header {
+  margin-bottom: 48px;
+}
+
+/* Filters */
+.portfolio-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.filter-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--border-color-hover);
+}
+
+.filter-btn.active {
+  color: var(--text-primary);
+  background: var(--gradient-glow);
+  border-color: var(--color-purple);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+}
+
+/* Grid */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+/* Portfolio Item */
+.portfolio-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.portfolio-item:hover {
+  border-color: var(--border-color-hover);
+  box-shadow: 0 8px 32px var(--shadow-color);
+}
+
+/* Long-Form: 16:9 horizontal */
+.portfolio-item-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #000;
+}
+
+/* Short-Form: 9:16 vertical, smaller */
+.portfolio-item.short-form .portfolio-item-media {
+  aspect-ratio: 9 / 16;
+  max-height: 400px;
+  margin: 0 auto;
+  width: 225px;
+}
+
+.portfolio-item-player {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Item Info */
+.portfolio-item-info {
+  padding: 16px 20px;
+}
+
+.portfolio-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.portfolio-item-category {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-purple);
+}
+
+.portfolio-item-year {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+.portfolio-item-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.portfolio-item-desc {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .portfolio-item.short-form .portfolio-item-media {
+    width: 200px;
+    max-height: 360px;
+  }
+}

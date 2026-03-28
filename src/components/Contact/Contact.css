@@ -1,0 +1,232 @@
+/* Contact Section */
+.contact {
+  position: relative;
+  background: var(--bg-primary);
+  padding-bottom: 0;
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* Left */
+.contact-left {
+  position: sticky;
+  top: 120px;
+}
+
+.contact-subtitle {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-top: 16px;
+  max-width: 440px;
+}
+
+/* Info */
+.contact-info {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-info-item {
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.info-label {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-purple);
+  margin-bottom: 8px;
+}
+
+.info-value {
+  font-size: 1rem;
+  color: var(--text-medium);
+  transition: color 0.3s ease;
+}
+
+a.info-value:hover {
+  color: var(--text-primary);
+}
+
+.contact-socials {
+  display: flex;
+  gap: 20px;
+}
+
+.contact-socials a {
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  transition: color 0.3s ease;
+}
+
+.contact-socials a:hover {
+  color: var(--color-lavender);
+}
+
+/* Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-label {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.form-group.focused .form-label,
+.form-group.filled .form-label {
+  color: var(--color-purple);
+}
+
+.form-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: var(--text-primary);
+  padding: 12px 0;
+  transition: all 0.3s ease;
+}
+
+.form-input::placeholder {
+  color: var(--text-muted);
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238B5CF6' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0 center;
+}
+
+.form-select option {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-line {
+  height: 1px;
+  background: var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.form-line::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #6559E0, #8B5CF6);
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.form-group.focused .form-line::after,
+.form-group.filled .form-line::after {
+  width: 100%;
+}
+
+/* Submit Button */
+.submit-btn {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+/* Footer */
+.footer {
+  margin-top: 120px;
+  padding: 32px 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social-link:hover {
+  color: var(--color-purple);
+  transform: translateY(-2px);
+}
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .contact-left {
+    position: static;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}
