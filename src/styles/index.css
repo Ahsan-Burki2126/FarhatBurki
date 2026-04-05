@@ -4,6 +4,96 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap');
 
+/* ---- Custom Fonts ---- */
+
+/* SF Pro Display — UI / Headings */
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/sf-pro-display-20260405T122445Z-1-001/sf-pro-display/SFPRODISPLAYREGULAR.OTF') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/sf-pro-display-20260405T122445Z-1-001/sf-pro-display/SFPRODISPLAYMEDIUM.OTF') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/sf-pro-display-20260405T122445Z-1-001/sf-pro-display/SFPRODISPLAYBOLD.OTF') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/sf-pro-display-20260405T122445Z-1-001/sf-pro-display/SFPRODISPLAYHEAVYITALIC.OTF') format('opentype');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/sf-pro-display-20260405T122445Z-1-001/sf-pro-display/SFPRODISPLAYBLACKITALIC.OTF') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/sf-pro-display-20260405T122445Z-1-001/sf-pro-display/SFPRODISPLAYLIGHTITALIC.OTF') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Apple Garamond — Display / Serif */
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('/apple_garamond-20260405T122443Z-1-001/apple_garamond/AppleGaramond.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('/apple_garamond-20260405T122443Z-1-001/apple_garamond/AppleGaramond-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('/apple_garamond-20260405T122443Z-1-001/apple_garamond/AppleGaramond-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('/apple_garamond-20260405T122443Z-1-001/apple_garamond/AppleGaramond-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('/apple_garamond-20260405T122443Z-1-001/apple_garamond/AppleGaramond-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('/apple_garamond-20260405T122443Z-1-001/apple_garamond/AppleGaramond-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* ---- Light Theme (default) ---- */
 :root {
   --bg-primary: #f8f8f8;
@@ -32,9 +122,9 @@
   --text-medium: rgba(0, 0, 0, 0.55);
 
   /* Typography */
-  --font-display: 'Playfair Display', serif;
-  --font-heading: 'Space Grotesk', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-display: 'Apple Garamond', 'Playfair Display', serif;
+  --font-heading: 'SF Pro Display', 'Space Grotesk', sans-serif;
+  --font-body: 'SF Pro Display', 'Inter', sans-serif;
 
   /* Spacing */
   --section-padding: 120px;
